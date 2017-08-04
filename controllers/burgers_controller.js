@@ -21,11 +21,11 @@ router.get("/burgers", function (req, res) {
         where: query,
         include: [db.Customer]
     }).then(function (data) {
-            var burgerObj = {
-                burgers: data
-            };
-            res.render("index", burgerObj);
-        });
+        var burgerObj = {
+            burgers: data
+        };
+        res.render("index", burgerObj);
+    });
 });
 
 //Post new burger input
@@ -39,18 +39,34 @@ router.post("/burgers/create", function (req, res) {
 
 //update input with customer name and devoured
 router.put("/burgers/:id", function (req, res) {
-    db.Burger.update({
-        devoured: req.body.devoured,
-    }, {
-            where: {
-                id: req.params.id
-            },
-            include: [db.Customer]
-           
+
+    var burgerEaten = req.body.devoured;
+    var burgerId = req.params.id;
+    //creating a customer from user input
+    if (req.body.customer_name === "") {
+        console.log("Please enter Customer name");
+    } else {
+        db.Customer.create({
+            name: req.body.customer_name
         }).then(function (data) {
-            console.log(data);
-            res.redirect("/burgers");
+            //updating the burger table with the new customer input
+            db.Burger.update({
+                devoured: burgerEaten,
+                CustomerId: data.id
+            }, {
+                    where: {
+                        id: burgerId
+                    },
+                    include: [db.Customer]
+
+                }).then(function (data) {
+                    console.log(data);
+                    res.redirect("/burgers");
+                });
         });
+    };
+
+
 
 });
 
