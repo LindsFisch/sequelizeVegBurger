@@ -1,21 +1,21 @@
 {
   "name": "sequelizeveggieburger",
   "version": "1.0.0",
-  "description": "veggie burger logger with mysql, node, express, handlebars",
+  "description": "veggie burger logger with sequelize, node, express, handlebars",
   "main": "server.js",
   "scripts": {
     "start": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LindsFisch/veggieBurger.git"
+    "url": "git+https://github.com/LindsFisch/sequelizeVegBurger.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LindsFisch/veggieBurger/issues"
+    "url": "https://github.com/LindsFisch/sequelizeVegBurger/issues"
   },
-  "homepage": "https://github.com/LindsFisch/veggieBurger#readme",
+  "homepage": "https://github.com/LindsFisch/sequelizeVegBurger#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
