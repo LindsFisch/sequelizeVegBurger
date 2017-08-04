@@ -1,0 +1,47 @@
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1 class="display-3">Veggie Burger Shack!</h1>
+        <p class="lead"><strong>For all your meatless burger needs</strong></p>
+    </div>
+</div>
+<div class="container" id="orderForm">
+    <form method="POST" action="/burgers/create">
+        <div class="form-group text-center">
+            <label for="order">Type in your order below</label>
+            <input type="text" class="form-control" name="burger_name">
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="container" id="burgerdisp">
+    <div class="row">
+        <div class="col-md-6" id="readyburgers">
+            <h3>Order Up!</h3>
+            {{#each burgers}}{{#unless this.devoured}}
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        {{this.id}}. {{this.burger_name}}
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+
+                        <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                            <input type="text" class="form control" name="customer_name">
+                            <input type="hidden" name="devoured" value="true">
+                            <button type="submit" class="btn btn-danger">EAT IT!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{/unless}}{{/each}}
+        </div>
+        <div class="col-md-6" id="eatenburgers">
+            <h3>Past Orders</h3>
+            {{#each burgers}}{{#if this.devoured}}
+            <div class="well" id="eaten">
+                {{this.id}}. {{this.burger_name}}
+            </div>
+            {{/if}}{{/each}}
+        </div>
+    </div>
+</div>

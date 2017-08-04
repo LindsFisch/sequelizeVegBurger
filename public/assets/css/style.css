@@ -1,0 +1,11 @@
+.jumbotron {
+    background-image: url("../images/fry.png");
+    background-position: left bottom;
+    background-repeat: repeat-x;
+}
+
+body {
+    background-image: url("../images/vegburger.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
