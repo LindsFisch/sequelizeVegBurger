@@ -4,7 +4,7 @@ var methodOverride = require("method-override");
 
 
 var app = express();
-var PORT = process.env.PORT || 3006;
+var port = process.env.PORT || 3006;
 
 var db = require("./models");
 
@@ -26,7 +26,7 @@ app.use("/", routes);
 
 
 db.sequelize.sync().then(function(){
-    app.listen(PORT, function(){
-        console.log("App listening on PORT " + PORT);
+    app.listen(port, function(){
+        console.log("App listening on PORT " + port);
     });
 });
